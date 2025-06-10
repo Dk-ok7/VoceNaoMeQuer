@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>😭 Poxa...</title>
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #ff4d4d;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    video {
+      width: 300px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    .botoes {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 1em;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #e60000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💔 Você partiu meu coração</h1>
+
+    <!-- VÍDEO COM AUTOPLAY, LOOP E COMEÇA MUDO -->
+    <video id="meuVideo" autoplay loop muted>
+      <source src="ok4.mp4" type="video/mp4">
+    </video>
+
+    <p>Mas tudo bem... eu pra sempre vou te esperar... sempre!</p>
+
+    <div class="botoes">
+      <!-- BOTÃO PARA VOLTAR -->
+      <button onclick="window.history.back()">Volta pra mim... 😞</button>
+
+      <!-- BOTÃO PARA MUTAR / DESMUTAR -->
+      <button onclick="toggleSom()" id="somBtn">🔇 Mutar</button>
+    </div>
+  </div>
+
+  <script>
+    const video = document.getElementById("meuVideo");
+    const botaoSom = document.getElementById("somBtn");
+
+    function toggleSom() {
+      video.muted = !video.muted;
+      botaoSom.textContent = video.muted ? "🔇 Mutar" : "🔊 Desmutar";
+    }
+  </script>
+</body>
+</html>
