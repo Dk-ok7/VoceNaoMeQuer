@@ -3,24 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>😭 Poxa...</title>
+  <title>💔 Poxa...</title>
   <style>
     body {
-      background-color: #1a1a1a;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
       color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
       text-align: center;
-      padding: 40px;
+      overflow: hidden;
     }
 
     .container {
       max-width: 600px;
-      margin: 0 auto;
+      margin: 80px auto 0;
+      padding: 20px;
     }
 
     h1 {
-      color: #ff4d4d;
       font-size: 2.5em;
+      color: #ffffff;
       margin-bottom: 20px;
     }
 
@@ -30,9 +33,10 @@
     }
 
     video {
-      width: 300px;
-      border-radius: 15px;
-      margin-bottom: 20px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+      margin-bottom: 25px;
     }
 
     .botoes {
@@ -42,17 +46,33 @@
     button {
       padding: 12px 20px;
       font-size: 1em;
-      background-color: #ff4d4d;
-      color: white;
+      background-color: #fff;
+      color: #000;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
       margin: 10px;
       transition: background-color 0.3s;
     }
 
     button:hover {
-      background-color: #e60000;
+      background-color: #ccc;
+    }
+
+    /* Emojis de choro caindo */
+    .emoji {
+      position: fixed;
+      top: -50px;
+      font-size: 2rem;
+      animation: cair linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes cair {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -60,22 +80,20 @@
   <div class="container">
     <h1>💔 Você partiu meu coração</h1>
 
-    <!-- VÍDEO COM AUTOPLAY, LOOP E COMEÇA MUDO -->
     <video id="meuVideo" autoplay loop muted>
       <source src="ok4.mp4" type="video/mp4">
+      Seu navegador não suporta vídeo HTML5.
     </video>
 
-    <p>Mas tudo bem... eu pra sempre vou te esperar... sempre!</p>
+    <p>Mas tudo bem... eu vou te esperar. 😢</p>
 
     <div class="botoes">
-      <!-- BOTÃO PARA VOLTAR -->
-      <button onclick="window.history.back()">Volta pra mim... 😞</button>
-
-      <!-- BOTÃO PARA MUTAR / DESMUTAR -->
+      <button onclick="window.history.back()">Voltar... 😞</button>
       <button onclick="toggleSom()" id="somBtn">🔇 Mutar</button>
     </div>
   </div>
 
+  <!-- Emojis de choro -->
   <script>
     const video = document.getElementById("meuVideo");
     const botaoSom = document.getElementById("somBtn");
@@ -84,6 +102,18 @@
       video.muted = !video.muted;
       botaoSom.textContent = video.muted ? "🔇 Mutar" : "🔊 Desmutar";
     }
+
+    function criarEmoji() {
+      const emoji = document.createElement("div");
+      emoji.classList.add("emoji");
+      emoji.textContent = "💔";
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.animationDuration = 4 + Math.random() * 3 + "s";
+      document.body.appendChild(emoji);
+      setTimeout(() => emoji.remove(), 7000);
+    }
+
+    setInterval(criarEmoji, 500);
   </script>
 </body>
 </html>
